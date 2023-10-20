@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Verdana', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.title{
+    background-color: rgba(117, 1, 226, 0.7);
+    border-radius: 10px;
+    padding: 10px 20px;
+    box-shadow: 5px 10px 10px rgba(0,0,0,.2);
+    color: white;
+    text-align: center;
+}
+
+.title h1{
+    margin: 0;
+}
+
+.game{
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(3, 120px);
+    margin-top: 7vh;
+}
+
+.item{
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    font-size: 60px;
+}
+
+.five {
+    border: 3px solid black;
+}
+
+.two, .eight{
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+}
+
+.four, .six {
+    border-top: 3px solid black;
+    border-bottom: 3px solid black;
+}
