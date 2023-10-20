@@ -19,39 +19,38 @@ var combination = {
 }
 
 const itemGrid = document.querySelectorAll(".item");
-
 const pTitle = document.querySelector(".title p");
 
 
 
 for(let i=0;i<itemGrid.length;i++){
 
-    if(playerTurn === 1){
-        pTitle.textContent = "Player 1 Turn";
-    } else {
-        pTitle.textContent = "Player 2 Turn";
-    }
+    
 
     itemGrid[i].addEventListener("click", (event) => {
         var clickedBtn = event.target.classList["1"];
 
         if(playerTurn === 1){
 
-         
+
+            pTitle.textContent = "Player 1 Turn";         
 
             document.querySelector("."+clickedBtn).innerHTML = "X";
             playerOne.push(clickedBtn);
 
-            for (let key in combination) {
-                if (combination[key].every(value => playerOne.includes(value))) {
-                    alert("Player 1 Won");
+            setTimeout(() => {
+                for (let key in combination) {
+                    if (combination[key].every(value => playerOne.includes(value))) {
+                        pTitle.textContent = "Player 1 Won!";
+                    }
                 }
-            }
+
+            }, 200);
 
             playerTurn = 2;
+            pTitle.textContent = "Player 2 Turn";
 
-        } else{
-
+        } else{ 
 
             document.querySelector("."+clickedBtn).innerHTML = "O";
             document.querySelector("."+clickedBtn).style.color = "blue";
@@ -59,14 +58,22 @@ for(let i=0;i<itemGrid.length;i++){
 
             
 
-            for (let key in combination) {
-                if (combination[key].every(value => playerTwo.includes(value))) {
-                    alert("Player 2 Won");
+            setTimeout(() => {
+                for (let key in combination) {
+                    if (combination[key].every(value => playerTwo.includes(value))) {
+                        alert("Player 2 Won");
+                        pTitle.textContent = "Player 2 Won!";
+                    }
                 }
-            }
+
+            }, 200);
 
             playerTurn = 1;
+            pTitle.textContent = "Player 1 Turn";
         }
     
     })
+
+
+    
 }
