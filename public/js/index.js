@@ -21,6 +21,8 @@ var combination = {
 const itemGrid = document.querySelectorAll(".item");
 const pTitle = document.querySelector(".title p");
 
+var boxes = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+
 
 
 for(let i=0;i<itemGrid.length;i++){
@@ -30,46 +32,54 @@ for(let i=0;i<itemGrid.length;i++){
     itemGrid[i].addEventListener("click", (event) => {
         var clickedBtn = event.target.classList["1"];
 
-        if(playerTurn === 1){
+        var found = boxes.includes(clickedBtn);
+        var index = boxes.indexOf(clickedBtn);
+        delete boxes[index];
+
+        if(found){
+            if(playerTurn === 1){
 
 
-            pTitle.textContent = "Player 1 Turn";         
-
-            document.querySelector("."+clickedBtn).innerHTML = "X";
-            playerOne.push(clickedBtn);
-
-            setTimeout(() => {
-                for (let key in combination) {
-                    if (combination[key].every(value => playerOne.includes(value))) {
-                        pTitle.textContent = "Player 1 Won!";
+                pTitle.textContent = "Player X Turn";         
+    
+                document.querySelector("."+clickedBtn).innerHTML = "X";
+                playerOne.push(clickedBtn);
+    
+                setTimeout(() => {
+                    for (let key in combination) {
+                        if (combination[key].every(value => playerOne.includes(value))) {
+                            pTitle.textContent = "Player X Won!";
+                            boxes = [];
+                        }
                     }
-                }
-
-            }, 200);
-
-            playerTurn = 2;
-            pTitle.textContent = "Player 2 Turn";
-
-        } else{ 
-
-            document.querySelector("."+clickedBtn).innerHTML = "O";
-            document.querySelector("."+clickedBtn).style.color = "blue";
-            playerTwo.push(clickedBtn);
-
-            
-
-            setTimeout(() => {
-                for (let key in combination) {
-                    if (combination[key].every(value => playerTwo.includes(value))) {
-                        alert("Player 2 Won");
-                        pTitle.textContent = "Player 2 Won!";
+    
+                }, 200);
+    
+                playerTurn = 2;
+                pTitle.textContent = "Player O Turn";
+    
+            } else{ 
+    
+                document.querySelector("."+clickedBtn).innerHTML = "O";
+                document.querySelector("."+clickedBtn).style.color = "blue";
+                playerTwo.push(clickedBtn);
+    
+                
+    
+                setTimeout(() => {
+                    for (let key in combination) {
+                        if (combination[key].every(value => playerTwo.includes(value))) {
+                            
+                            pTitle.textContent = "Player O Won!";
+                            boxes = [];
+                        }
                     }
-                }
-
-            }, 200);
-
-            playerTurn = 1;
-            pTitle.textContent = "Player 1 Turn";
+    
+                }, 200);
+    
+                playerTurn = 1;
+                pTitle.textContent = "Player X Turn";
+            }
         }
     
     })

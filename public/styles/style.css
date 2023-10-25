@@ -52,3 +52,21 @@ body{
     border-top: 3px solid black;
     border-bottom: 3px solid black;
 }
+
+.reset {
+    margin-top: 1vh;
+    align-self: flex-end;
+    margin-right: 5%;
+}
+
+.reset button{
+    border: none;
+    background-color: rgba(117, 1, 226, 0.7);
+    border-radius: 10px;
+    font-size: 18px;
+    box-shadow: 5px 10px 10px rgba(0,0,0,.2);
+    color: white;
+    text-align: center;
+    padding: 10px 20px;
+    cursor: pointer;
+}
